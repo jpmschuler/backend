@@ -92,6 +92,13 @@ define(['jquery', 'TYPO3/CMS/Recordlist/LinkBrowser', 'TYPO3/CMS/Backend/Modal']
     if (
       typeof window.parent !== 'undefined' &&
       typeof window.parent.document.list_frame !== 'undefined' &&
+      window.parent.document.list_frame.parent.document.querySelector('.t3js-modal-iframe') !== null &&
+      window.parent.document.list_frame.parent.document.querySelector('.t3js-modal-iframe').getRootNode().querySelector('body.modal-open') !== null
+    ) {
+      opener = window.parent.document.list_frame.parent.document.querySelector('.t3js-modal-iframe').contentWindow;
+    } else if (
+      typeof window.parent !== 'undefined' &&
+      typeof window.parent.document.list_frame !== 'undefined' &&
       window.parent.document.list_frame.parent.document.querySelector('.t3js-modal-iframe') !== null
     ) {
       opener = window.parent.document.list_frame;
